@@ -1,0 +1,49 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_exe1/model/user_data.dart';
+
+
+
+class UserListScreen extends StatelessWidget {
+  const UserListScreen({super.key});
+  static const users = [
+    User(
+      name: 'Aung Aung',
+      email: 'aung@example.com',
+      role: 'admin',
+    ),
+     User(
+      name: 'Su Su',
+      email: 'susu@example.com',
+      role: 'editor',
+    ),
+    User(
+      name: 'Kyaw Kyaw',
+      email: 'kyaw@example.com',
+      role: 'author',
+    )
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('User List')),
+      body: ListView.builder(
+        padding: const EdgeInsets.all(16),
+        itemCount: users.length,
+        itemBuilder: (context, index){
+          final user = users[index];
+
+          return Card(
+            child:ListTile(
+              leading: const CircleAvatar(
+                child: Icon(Icons.person),
+              ),
+              title: Text(user.name),
+              subtitle: Text(user.email),
+              trailing: Text(user.role),
+            ),
+          );
+        }
+      )
+    );
+  }
+}
